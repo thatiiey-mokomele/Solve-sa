@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b72">
+<title>SOLVE SA | Opportunities, Help & Services</title>
+<style>
+:root{--navy:#123b72;--blue:#1769aa;--sky:#eaf4ff;--ink:#172337;--muted:#617086;--white:#fff;--line:#dce5ef;--green:#16845b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f8fc;color:var(--ink);line-height:1.5}
+header{background:linear-gradient(120deg,#123b72,#1769aa);color:white;padding:22px 18px 28px}
+.top{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:1.35rem;font-weight:800;letter-spacing:1px}.tag{font-size:.9rem;opacity:.9}
+.hero{max-width:1050px;margin:28px auto 0}.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.12;margin:0 0 10px}.hero p{max-width:650px;margin:0;color:#e6f1ff}
+main{max-width:1050px;margin:22px auto;padding:0 14px 45px}
+.notice{background:#fff8e8;border:1px solid #f0d9a7;border-radius:12px;padding:12px 14px;color:#684d16;font-size:.9rem;margin-bottom:18px}
+nav{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:18px}
+nav button,.action{border:0;border-radius:10px;padding:13px 10px;font-weight:700;cursor:pointer}
+nav button{background:#e5eef8;color:var(--navy)}nav button.active{background:var(--navy);color:white}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 18px #17365d0b}.panel.active{display:block}
+h2{margin:0 0 6px;color:var(--navy)}.intro{color:var(--muted);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px}
+.card{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff}.card h3{margin:0 0 6px;font-size:1.05rem}.card p{margin:0 0 10px;color:var(--muted);font-size:.92rem}
+.pill{display:inline-block;background:var(--sky);color:var(--blue);font-size:.75rem;font-weight:700;padding:4px 8px;border-radius:30px;margin-bottom:8px}
+form{display:grid;gap:12px;max-width:650px}label{font-weight:700;font-size:.9rem}input,textarea,select{width:100%;margin-top:5px;padding:12px;border:1px solid #cbd7e4;border-radius:9px;font:inherit;background:white}textarea{min-height:100px;resize:vertical}
+.action{background:var(--blue);color:white;padding:12px 18px}.action:hover{filter:brightness(.94)}
+.secondary{background:#eaf1f8;color:var(--navy)}.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed #cbd7e4;border-radius:12px}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:22px}
+.small{font-size:.8rem;color:var(--muted)}.success{color:var(--green);font-weight:700;min-height:1.3em}
+@media(max-width:520px){header{padding:18px 15px 24px}.hero{margin-top:22px}nav button{font-size:.82rem;padding:11px 5px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top"><div><div class="logo">SOLVE SA</div><div class="tag">Together, we find solutions.</div></div><div aria-label="South Africa">🇿🇦</div></div>
+  <section class="hero"><h1>Find opportunities.<br>Ask for help. Find services.</h1><p>A community platform designed to connect people in South Africa with useful opportunities, support and local services.</p></section>
+</header>
+<main>
+  <div class="notice"><strong>Demo version:</strong> Information you add is saved only on this device in this browser. It is not yet sent to other people or published online.</div>
+  <nav aria-label="Main sections">
+    <button class="active" data-tab="opportunities">Opportunities</button>
+    <button data-tab="help">Request Help</button>
+    <button data-tab="services">Find Services</button>
+  </nav>
+  <section id="opportunities" class="panel active">
+    <h2>Opportunities</h2><p class="intro">Explore sample opportunities. Add real, verified opportunities as the platform grows.</p>
+    <div class="grid" id="opportunityList">
+      <article class="card"><span class="pill">Education</span><h3>Study and skills development</h3><p>Look for learnerships, bursaries, short courses and training programmes.</p><span class="small">Tip: Confirm closing dates and requirements with the provider.</span></article>
+      <article class="card"><span class="pill">Work</span><h3>Jobs and internships</h3><p>Explore entry-level jobs, internships and work experience opportunities.</p><span class="small">Tip: Never pay someone to secure a job for you.</span></article>
+      <article class="card"><span class="pill">Community</span><h3>Community projects</h3><p>Find volunteering, youth programmes and ways to support your community.</p><span class="small">Tip: Check that organisations are genuine before sharing details.</span></article>
+    </div>
+  </section>
+  <section id="help" class="panel">
+    <h2>Request Help</h2><p class="intro">Describe the support you need. Your request will be saved on this device in this demo.</p>
+    <form id="helpForm">
+      <label>Your name (optional)<input name="name" maxlength="60" placeholder="Enter your name"></label>
+      <label>What kind of help do you need?
+        <select name="category" required><option value="">Choose a category</option><option>Education</option><option>Food support</option><option>Clothing</option><option>Employment</option><option>Transport</option><option>Other</option></select>
+      </label>
+      <label>Describe your request<textarea name="details" required maxlength="1000" placeholder="Explain what help you are looking for..."></textarea></label>
+      <label>Contact detail (optional)<input name="contact" maxlength="100" placeholder="Email or phone number"></label>
+      <button class="action" type="submit">Save help request</button><div class="success" id="helpMessage" role="status"></div>
+    </form>
+    <div id="helpSaved"></div>
+  </section>
+  <section id="services" class="panel">
+    <h2>Find Services</h2><p class="intro">Search the sample service categories or add a service listing for this device.</p>
+    <label>Search services<input id="serviceSearch" placeholder="Try: tutoring, repairs, advice..."></label><br><br>
+    <div class="grid" id="serviceList">
+      <article class="card service"><span class="pill">Education</span><h3>Tutoring and learning support</h3><p>Academic support, study groups and skills tutoring.</p></article>
+      <article class="card service"><span class="pill">Home</span><h3>Home and repair services</h3><p>Repairs, maintenance and practical assistance.</p></article>
+      <article class="card service"><span class="pill">Community</span><h3>Community support organisations</h3><p>Local organisations and community-based support.</p></article>
+    </div>
+    <hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
+    <h3>Add a service</h3>
+    <form id="serviceForm">
+      <label>Service name<input name="title" required maxlength="80" placeholder="e.g. Maths tutoring"></label>
+      <label>Category<input name="category" required maxlength="40" placeholder="e.g. Education"></label>
+      <label>Area (optional)<input name="area" maxlength="80" placeholder="Town or area"></label>
+      <label>Contact detail (optional)<input name="contact" maxlength="100" placeholder="Phone or email"></label>
+      <button class="action" type="submit">Save service</button><div class="success" id="serviceMessage" role="status"></div>
+    </form>
+  </section>
+  <footer>SOLVE SA · Built to connect communities with solutions.<br><span class="small">Please verify opportunities, organisations and service providers independently.</span></footer>
+</main>
+<script>
+const tabs=document.querySelectorAll('nav button');
+tabs.forEach(btn=>btn.addEventListener('click',()=>{tabs.forEach(b=>b.classList.remove('active'));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active')}));
+const read=(key)=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
+const save=(key,data)=>localStorage.setItem(key,JSON.stringify(data));
+function renderHelp(){const items=read('solveSaHelp');const box=document.getElementById('helpSaved');box.innerHTML=items.length?'<h3>Your saved requests</h3>'+items.map(x=>`<article class="card"><span class="pill">${escapeHtml(x.category)}</span><h3>${escapeHtml(x.details)}</h3><p>${escapeHtml(x.name||'Name not provided')} · ${escapeHtml(x.contact||'No contact provided')}</p></article>`).join(''):'<div class="empty">You have not saved any requests on this device yet.</div>'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('helpForm').addEventListener('submit',e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const a=read('solveSaHelp');a.unshift(d);save('solveSaHelp',a);e.target.reset();document.getElementById('helpMessage').textContent='Your request has been saved on this device.';renderHelp()});
+document.getElementById('serviceForm').addEventListener('submit',e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const a=read('solveSaServices');a.unshift(d);save('solveSaServices',a);e.target.reset();document.getElementById('serviceMessage').textContent='Your service has been saved on this device.';renderServices()});
+function renderServices(){const defaults=[...document.querySelectorAll('.service')];const added=read('solveSaServices');const list=document.getElementById('serviceList');list.innerHTML=defaults.map(x=>x.outerHTML).join('')+added.map(x=>`<article class="card service"><span class="pill">${escapeHtml(x.category)}</span><h3>${escapeHtml(x.title)}</h3><p>${escapeHtml(x.area||'Area not provided')} · ${escapeHtml(x.contact||'Contact not provided')}</p></article>`).join('');filterServices()}
+function filterServices(){const q=document.getElementById('serviceSearch').value.toLowerCase();document.querySelectorAll('#serviceList .service').forEach(c=>c.style.display=c.textContent.toLowerCase().includes(q)?'':'none')}
+document.getElementById('serviceSearch').addEventListener('input',filterServices);
+renderHelp();renderServices();
+</script>
+</body>
+</html>
